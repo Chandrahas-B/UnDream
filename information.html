@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id='info'></div>
+    <script>
+        let check = null;
+        const date1 = document.getElementById('date');
+        // console.log(date1.value);
+        const apiKey='jKjtLEaaGUQa4WrI25UFp5d3cKaTEAoJJNmh737B';
+        const url='https://api.nasa.gov/neo/rest/v1/feed?start_date='+'2022-11-18'+'&end_date='+'2022-11-18'+'&api_key='+apiKey;
+//         const userAction = async () => {
+//         const response = await fetch(url);
+//         check = await response.json(); //extract JSON from the http response
+//   // do something with myJson
+// }
+        let request = new XMLHttpRequest();
+        request.open("GET", url);
+        request.send();
+        request.onload = () => {
+        // console.log(request);
+        if (request.status === 200) {
+          // by default the response comes in the string format, we need to parse the data into JSON
+        //   console.log(JSON.parse(request.response));
+          data = JSON.parse(request.response);
+          jsonfile(data)
+        } else {
+            console.log(`error ${request.status} ${request.statusText}`);
+        }
+    };
+    function jsonfile(check)
+    {
+    console.log(check);
+    }
+    // console.log(myJson);
+     
+    </script>
+</body>
+</html>
